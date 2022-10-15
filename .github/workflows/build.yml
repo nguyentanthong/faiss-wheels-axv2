@@ -62,6 +62,7 @@ jobs:
           CIBW_ENVIRONMENT: >
             FAISS_OPT_LEVEL=avx2
             FAISS_ENABLE_GPU=${{ matrix.gpu }}
+            FAISS_LDFLAGS='-l:libfaiss_avx2.a -l:libopenblas.a -lgfortran'
           CIBW_BEFORE_ALL: bash scripts/build_${{ runner.os }}.sh
 
       - uses: actions/upload-artifact@v2
